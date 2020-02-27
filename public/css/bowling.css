@@ -1,0 +1,39 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  width: 45px;
+  height: 60px;
+  border: 1px solid black;
+  margin: 1px;
+}
+
+.round {
+  text-align: center;
+  font-size: 8px;
+  border-bottom: 1px solid black;
+}
+
+.throws {
+  border-bottom: 1px solid black;
+  font-size: 8px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.throw {
+  flex-grow: 3;
+}
+
+.throw1,
+.throw2 {
+  flex-grow: 1;
+  border-left: 1px solid black;
+  text-align: center;
+}
+
+.score {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

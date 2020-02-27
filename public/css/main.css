@@ -1,0 +1,130 @@
+:root {
+  --darkLight: #f4f4f4;
+  --lightFont: #f7f7f7;
+  --backgroundGrey: #eaeaea;
+  --backgroundBlue: #40526c;
+  --mellowYellow: #fcbb6d;
+  --finishGreen: #4ab19d;
+  --overdueRed: #d8737f;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  /* font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; */
+}
+
+.content {
+  flex-grow: 1;
+  background-color: var(--backgroundGrey);
+}
+
+h1 {
+  color: var(--backgroundBlue);
+}
+
+p {
+  color: var(--backgroundBlue);
+}
+
+a {
+  color: #00b7ff;
+  text-decoration: none;
+}
+
+datalist {
+  display: none;
+}
+
+.darkBackground {
+  background-color: var(--backgroundBlue);
+}
+
+.lightFont {
+  color: var(--lightFont);
+}
+
+.darkFont {
+  color: var(--backgroundBlue);
+}
+
+.mellowYellow {
+  color: var(--mellowYellow);
+}
+
+.overdueRed {
+  color: var(--overdueRed);
+}
+
+.finishGreen {
+  color: var(--finishGreen);
+}
+
+.btn-default {
+  background-color: var(--finishGreen);
+}
+
+.btn-finish {
+  background-color: var(--finishGreen);
+}
+
+.btn-overdue {
+  background-color: var(--overdueRed);
+}
+
+.btn-mellowYellow {
+  background-color: var(--mellowYellow);
+}
+
+.btn-outline-finish,
+.btn-outline-finish:hover {
+  color: var(--finishGreen);
+  background-color: transparent !important;
+  border: 2px solid var(--finishGreen);
+}
+
+.btn-outline-overdue,
+.btn-outline-overdue:hover {
+  color: var(--overdueRed);
+  background-color: transparent !important;
+  border: 2px solid var(--overdueRed);
+}
+
+.greyBackground {
+  background-color: var(--backgroundGrey);
+}
+
+.padz {
+  padding: 0.75rem;
+}
+
+@media (max-width: 576px) {
+  .go-first {
+    order: -1;
+  }
+}
+
+/* Smartphones ----------- */
+@media only screen and (max-width: 760px) {
+  .nav-fixed {
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+  }
+  .nav-space {
+    padding-top: 3rem;
+  }
+}
+
+@media (max-width: 376px) {
+  .table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+  }
+}
