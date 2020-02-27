@@ -25,7 +25,8 @@
 }
 
 .throw1,
-.throw2 {
+.throw2,
+.throw3 {
   flex-grow: 1;
   border-left: 1px solid black;
   text-align: center;

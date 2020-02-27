@@ -30,15 +30,38 @@ function generateScoreFrame(frame, i) {
   const round = i + 1;
   let throw1 = "";
   let throw2 = "";
-  if (frame.status === "strike") {
-    throw2 = "X";
-  } else if (frame.status === "spare") {
-    throw1 = frame.rolls[0];
-    throw2 = "/";
+  let bonusthrow = false;
+  if (round === 10 && !(frame.status === "open")) {
+    if (frame.status === "strike") {
+      throw1 = frame.rolls[0] === 10 ? "X" : frame.rolls[0];
+      throw2 = frame.rolls[1] === 10 ? "X" : frame.rolls[1];
+      bonusthrow = frame.rolls[2] === 10 ? "X" : frame.rolls[2];
+    } else {
+      throw1 = frame.rolls[0];
+      throw2 = "/";
+      bonusthrow = frame.rolls[2];
+    }
   } else {
-    throw1 = frame.rolls[0];
-    throw2 = frame.rolls[1];
+    if (frame.status === "strike") {
+      throw2 = "X";
+    } else if (frame.status === "spare") {
+      throw1 = frame.rolls[0];
+      throw2 = "/";
+    } else {
+      throw1 = frame.rolls[0];
+      throw2 = frame.rolls[1];
+    }
   }
+
+  const score =
+    bonusthrow !== false
+      ? tenthFrame(round, throw1, throw2, frame.cumSum, bonusthrow)
+      : normalFrame(round, throw1, throw2, frame.cumSum);
+
+  $("#scores").append(score);
+}
+
+function normalFrame(round, throw1, throw2, cumSum) {
   const score = `<div class="frame">
   <div class="round">
     <span>Round ${round}</span>
@@ -55,10 +78,38 @@ function generateScoreFrame(frame, i) {
     </div>
   </div>
   <div class="score">
-    <span>${frame.cumSum}</span>
+    <span>${cumSum}</span>
   </div>
   </div>`;
-  $("#scores").append(score);
+
+  return score;
+}
+
+function tenthFrame(round, throw1, throw2, cumSum, bonusthrow) {
+  const score = `<div class="frame">
+  <div class="round">
+    <span>Round ${round}</span>
+  </div>
+  <div class="throws">
+    <div class="throw">
+
+    </div>
+    <div class="throw1">
+      <span>${throw1}</span>
+    </div>
+    <div class="throw2">
+      <span>${throw2}</span>
+    </div>
+    <div class="throw3">
+      <span>${bonusthrow}</span>
+    </div>
+  </div>
+  <div class="score">
+    <span>${cumSum}</span>
+  </div>
+  </div>`;
+
+  return score;
 }
 
 function overview(result) {
